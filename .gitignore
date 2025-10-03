@@ -1,0 +1,51 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+dist/
+build/
+*.egg-info/
+tests/
+repos/
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# r
+# Testing
+.tox/
+.noseids
+*.cover
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.log
+
+# Environments
+.env
+*.env
+
+# Pytest
+.pytest_cache/
+*.pytest_cache/
+
+# gcp credentials
+*.json
+
+# vector db files
+vector_db/
+node_modules

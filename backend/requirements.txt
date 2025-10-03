@@ -1,0 +1,55 @@
+# FastAPI and server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Database
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.13.1
+
+# Google Cloud services
+google-cloud-documentai==2.21.0
+google-cloud-vision==3.4.4
+google-cloud-language==2.11.1
+google-cloud-storage==2.10.0
+google-cloud-firestore==2.13.1
+
+# Cloud SQL Connector
+cloud-sql-python-connector[pg8000]==1.11.0
+
+# Firebase
+firebase-admin==6.2.0
+
+# File handling
+python-multipart==0.0.6
+pillow==10.1.0
+
+# Utilities
+python-dotenv==1.0.0
+pydantic[email]==2.5.0
+pydantic-settings==2.1.0
+requests==2.31.0
+pandas==2.1.4
+faker==20.1.0
+
+# Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# Additional useful packages
+asyncpg==0.29.0
+aiofiles==23.2.1
+
+# Contract Generation
+reportlab==4.0.4
+
+# Email Notifications  
+email-validator==2.0.0
+jinja2==3.1.2
+
+reportlab>=3.6.0

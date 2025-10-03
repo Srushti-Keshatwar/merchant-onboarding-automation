@@ -1,0 +1,60 @@
+services:
+  # Backend API Service
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      - PROJECT_ID=zippy-pad-473008-v0
+      - PROJECT_NUMBER=943373916171
+      - REGION=us-central1
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
+      - DATABASE_URL=postgresql://merchant_user:MerchantHack2024!@#@db:5432/merchant_db
+      - STORAGE_BUCKET=zippy-pad-473008-v0-merchant-docs
+      - DOCUMENT_AI_PROCESSOR_ID=452734bdc979b2a5
+      - DOCUMENT_AI_LOCATION=us
+      - DEBUG=True
+      - LOG_LEVEL=INFO
+      - ENVIRONMENT=development
+    volumes:
+      - ./backend:/app
+      - ./backend/uploads:/app/uploads
+      - ./backend/contracts:/app/contracts
+
+    depends_on:
+      - db
+    networks:
+      - merchant_network
+    restart: unless-stopped
+
+  # PostgreSQL Database
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=merchant_db
+      - POSTGRES_USER=merchant_user
+      - POSTGRES_PASSWORD=MerchantHack2024!@#
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
+    networks:
+      - merchant_network
+    restart: unless-stopped
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - merchant_network
+    restart: unless-stopped
+
+networks:
+  merchant_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
